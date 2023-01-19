@@ -1,0 +1,47 @@
+<launch>
+  <arg name="model" />
+  <arg name="gui" default="True" />
+  <param name="use_gui" value="$(arg gui)" />
+
+  
+    <!-- device_index used in  Ps2_GetDeviceInfo -->
+    <arg name="device_index" default="0"/>
+    <!-- dataMode used in  Ps2_SetDataMode -->
+    <arg name="dataMode" default="0"/>
+    <!-- depth_range used in  Ps2_SetDepthRange -->
+    <arg name="depth_range" default="0"/>
+    <!-- rgb_resolutin used in  Ps2_SetRGBResolution -->
+    <arg name="rgb_resolution" default="2"/>
+    
+
+    <node pkg="vzense_camera" type="vzense_camera" name="vzense_manager" output="screen" required="true">
+        <param name="device_index" value="$(arg device_index)" type="int"/>
+        <param name="dataMode" value="$(arg dataMode)" type="int"/>
+        <param name="depth_range" value="$(arg depth_range)" type="int"/>
+        <param name="rgb_resolution" value="$(arg rgb_resolution)" type="int"/>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="nodelet_pointcloudxyz_manager" args="manager" />
+
+    <node pkg="nodelet" type="nodelet" name="pointcloudxyz_manager"
+         args="load depth_image_proc/point_cloud_xyz nodelet_pointcloudxyz_manager">
+     <remap from="camera_info" to="/Vzense/depth/camera_info"/>
+     <remap from="image_rect" to="/Vzense/depth/image_raw"/>
+     <remap from="points" to="/Vzense/depth/points"/>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="nodelet_pointcloudxyzrgb_manager" args="manager" />
+
+    <node pkg="nodelet" type="nodelet" name="pointcloudxyzrgb_manager"
+         args="load depth_image_proc/point_cloud_xyzrgb nodelet_pointcloudxyzrgb_manager">
+     <remap from="depth_registered/image_rect" to="/Vzense/aligned_depth_to_color/image_raw"/>
+     <remap from="depth_registered/points" to="/Vzense/aligned_depth_to_color/points"/>
+     <remap from="rgb/image_rect_color" to="/Vzense/color/image_raw"/>
+     <remap from="rgb/camera_info" to="/Vzense/color/camera_info"/>
+    </node>
+
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find Vzense_ROS_Plugin_Linux)/urdf.rviz" />
+
+
+</launch>
