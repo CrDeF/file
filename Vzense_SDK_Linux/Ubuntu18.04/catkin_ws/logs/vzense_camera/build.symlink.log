@@ -1,0 +1,5 @@
+Symlinking /home/kjm/Vzense_SDK_Linux/Ubuntu18.04/catkin_ws/devel/lib/pkgconfig/vzense_camera.pc
+Symlinking /home/kjm/Vzense_SDK_Linux/Ubuntu18.04/catkin_ws/devel/lib/vzense_camera/vzense_camera
+Symlinking /home/kjm/Vzense_SDK_Linux/Ubuntu18.04/catkin_ws/devel/lib/python2.7/dist-packages/vzense_camera/__init__.py
+Symlinking /home/kjm/Vzense_SDK_Linux/Ubuntu18.04/catkin_ws/devel/share/vzense_camera/cmake/vzense_cameraConfig.cmake
+Symlinking /home/kjm/Vzense_SDK_Linux/Ubuntu18.04/catkin_ws/devel/share/vzense_camera/cmake/vzense_cameraConfig-version.cmake
