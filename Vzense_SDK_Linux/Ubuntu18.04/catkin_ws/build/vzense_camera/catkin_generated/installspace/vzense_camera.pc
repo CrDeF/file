@@ -1,8 +1,0 @@
-prefix=/home/kjm/Vzense_SDK_Linux/Ubuntu18.04/catkin_ws/install
-
-Name: vzense_camera
-Description: Description of vzense_camera
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: camera_info_manager image_transport tf2 tf2_ros geometry_msgs message_runtime roscpp rospy cv_bridge

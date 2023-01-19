@@ -1,1 +1,0 @@
-/home/kjm/Vzense_SDK_Linux/Ubuntu18.04/catkin_ws/devel/.private/vzense_camera/lib/python2.7/dist-packages/vzense_camera/__init__.py
